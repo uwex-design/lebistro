@@ -1,0 +1,108 @@
+// HERO
+.hero-video video,
+.hero-video img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+// SOBRE
+// MENU SECTION
+.s-menu-pre-title {
+	color: #fbf5dc;
+	font-family: var(--font-body);
+	font-size: 1rem;
+	line-height: 0;
+	display: block;
+	width: 100%;
+	margin-bottom: 0;
+
+	@include mixins.mobile {
+		font-size: 0.8rem;
+	}
+}
+.s-menu-title {
+	color: #fbf5dc;
+	font-family: var(--font-heading);
+	font-size: clamp(8.75rem, 5.8804rem + 14.3478vw, 17rem);
+	line-height: 1;
+	font-style: normal;
+	font-weight: 700;
+	letter-spacing: 3px;
+	@include mixins.mobile {
+		font-size: clamp(6.75rem, 3.8804rem + 4.3478vw, 8rem);
+	}
+}
+.lb_sobre-text .text-image_wrapper {
+	position: relative;
+	perspective-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	transform: scale(1) rotate(0deg);
+	transition: all ease-out 400ms;
+	&:hover {
+		transform: scale(1.1) rotate(2deg);
+	}
+}
+.sobre-text {
+	font-size: 4.5rem;
+	position: relative;
+	white-space: wrap;
+	@media screen and (max-width: 1920px) {
+		font-size: calc(2.5rem + 1.666666666666667vw);
+	}
+	@media screen and (max-width: 1440px) {
+		font-size: calc(2.750780437044745rem + 0.8324661810613945vw);
+	}
+	@media screen and (max-width: 479px) {
+		font-size: calc(1.9994769874476988rem + 0.8368200836820083vw);
+	}
+	.text-image_wrapper {
+		display: inline-block;
+		position: relative;
+		z-index: 0;
+		height: 72px;
+		width: 148px;
+		@include mixins.mobile {
+			top: 4px;
+			display: block;
+			height: 72px;
+			width: 100%;
+			&-two {
+				display: none !important;
+			}
+		}
+		img {
+			position: absolute;
+			top: calc(50% + 8px);
+			left: 0;
+			transform: translateY(-50%);
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 48px;
+			@include mixins.mobile {
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 180px;
+			}
+		}
+	}
+}
+
+// DEPOIMENTOS
+.swiper-depoimentos {
+	.swiper-slide {
+		&:not(.swiper-slide-active) {
+			opacity: 0;
+			transition: all ease-out 300ms;
+			@include mixins.mobile {
+				opacity: 1;
+			}
+		}
+		&.swiper-slide-active {
+			opacity: 1;
+			transition: all ease-out 300ms;
+		}
+	}
+}
