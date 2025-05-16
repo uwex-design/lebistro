@@ -1,3 +1,5 @@
+@use "../mixins" as *;
+
 // HERO
 .hero-video video,
 .hero-video img {
@@ -17,10 +19,11 @@
 	width: 100%;
 	margin-bottom: 0;
 
-	@include mixins.mobile {
+	@include mobile {
 		font-size: 0.8rem;
 	}
 }
+
 .s-menu-title {
 	color: #fbf5dc;
 	font-family: var(--font-heading);
@@ -29,10 +32,11 @@
 	font-style: normal;
 	font-weight: 700;
 	letter-spacing: 3px;
-	@include mixins.mobile {
+	@include mobile {
 		font-size: clamp(6.75rem, 3.8804rem + 4.3478vw, 8rem);
 	}
 }
+
 .lb_sobre-text .text-image_wrapper {
 	position: relative;
 	perspective-origin: 50% 50%;
@@ -62,7 +66,7 @@
 		z-index: 0;
 		height: 72px;
 		width: 148px;
-		@include mixins.mobile {
+		@include mobile {
 			top: 4px;
 			display: block;
 			height: 72px;
@@ -80,7 +84,7 @@
 			height: 100%;
 			object-fit: cover;
 			border-radius: 48px;
-			@include mixins.mobile {
+			@include mobile {
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
@@ -96,7 +100,7 @@
 		&:not(.swiper-slide-active) {
 			opacity: 0;
 			transition: all ease-out 300ms;
-			@include mixins.mobile {
+			@include mobile {
 				opacity: 1;
 			}
 		}
@@ -106,3 +110,5 @@
 		}
 	}
 }
+
+//MENU

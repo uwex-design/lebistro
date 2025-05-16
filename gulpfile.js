@@ -7,32 +7,40 @@ const concat = require("gulp-concat");
 
 // Compilar SCSS para CSS
 const scssToCss = () => {
-	return src("./scss/*.scss")
-		.pipe(sass().on("error", sass.logError))
+	return src("./scss/*.scss", { sourcemaps: true })
+		.pipe(
+			sass({
+				api: "modern",
+			}).on("error", sass.logError)
+		)
 		.pipe(
 			uglifycss({
 				uglyComments: true,
 			})
 		)
 		.pipe(rename("style.min.css"))
-		.pipe(dest("./dist/css"));
+		.pipe(dest("./dist/css", { sourcemaps: true }));
 };
 
 // Minificar JS comum
 const minifyCommonJs = () => {
-	return src("./js/common/*.js").pipe(concat("common.js")).pipe(terser()).pipe(rename("common.min.js")).pipe(dest("./dist/js"));
+	return src("./js/common/*.js", { sourcemaps: true })
+		.pipe(concat("common.js"))
+		.pipe(terser())
+		.pipe(rename("common.min.js"))
+		.pipe(dest("./dist/js", { sourcemaps: true }));
 };
 
 // Minificar JS das páginas
 const minifyPagesJs = () => {
-	return src("./js/pages/*.js")
+	return src("./js/pages/*.js", { sourcemaps: true })
 		.pipe(terser())
 		.pipe(
 			rename(function (path) {
 				path.basename = path.basename + ".min";
 			})
 		)
-		.pipe(dest("./dist/js/pages"));
+		.pipe(dest("./dist/js/pages", { sourcemaps: true }));
 };
 
 // Watch files

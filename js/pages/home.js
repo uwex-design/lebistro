@@ -67,3 +67,56 @@ document.addEventListener("DOMContentLoaded", function () {
 		ease: "power2.out",
 	});
 });
+
+// Modal Antonina
+const modalTrigger = document.querySelector('[data-modal="antonina"]');
+const modalAntonina = document.querySelector(".modal_img-antonina");
+const modalWrapper = modalAntonina.querySelector(".modal_wrapper");
+
+modalTrigger.addEventListener("click", () => {
+	modalAntonina.classList.add("open-modal");
+	modalAntonina.style.opacity = "1"; // Resetar opacidade ao abrir
+	modalAntonina.style.display = "block"; // Garantir que esteja visível
+
+	gsap.to(modalAntonina, {
+		backdropFilter: "blur(20px)",
+		duration: 1,
+		ease: "sine.out",
+	});
+
+	gsap.from(modalWrapper, {
+		scale: 0,
+		rotation: 5,
+		duration: 1,
+		ease: "sine.out(1.5)",
+	});
+});
+
+// Fechar modal ao clicar fora ou no botão fechar
+modalAntonina.addEventListener("click", (e) => {
+	if (e.target === modalAntonina) {
+		gsap.to(modalAntonina, {
+			backdropFilter: "blur(0px)",
+			opacity: 0,
+			duration: 1,
+			onComplete: () => {
+				modalAntonina.classList.remove("open-modal");
+				modalAntonina.style.display = "none";
+			},
+		});
+	}
+});
+
+const closeModalBtn = document.querySelector(".close-modal");
+closeModalBtn.addEventListener("click", () => {
+	gsap.to(modalAntonina, {
+		backdropFilter: "blur(0px)",
+		opacity: 0,
+		duration: 1,
+		ease: "sine.out",
+		onComplete: () => {
+			modalAntonina.classList.remove("open-modal");
+			modalAntonina.style.display = "none";
+		},
+	});
+});
