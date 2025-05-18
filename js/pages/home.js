@@ -136,7 +136,7 @@ if (sobreText) {
 		scrollTrigger: {
 			trigger: sobreText,
 			start: "top 80%",
-			end: "top 20%",
+			end: "top 25%",
 			scrub: true, // Faz a animação acompanhar o scroll
 			toggleActions: "play none none reverse",
 		},
