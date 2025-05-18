@@ -120,3 +120,46 @@ closeModalBtn.addEventListener("click", () => {
 		},
 	});
 });
+
+// Animação de texto na seção Sobre
+gsap.registerPlugin(SplitText);
+
+const sobreText = document.querySelector(".sobre-text");
+const textImageWrappers = document.querySelectorAll(".text-image_wrapper");
+
+if (sobreText) {
+	// Divide o texto em palavras e caracteres
+	let split = SplitText.create(sobreText, { type: "words, chars" });
+
+	// Configura a animação com ScrollTrigger
+	gsap.from(split.chars, {
+		scrollTrigger: {
+			trigger: sobreText,
+			start: "top 80%",
+			end: "top 20%",
+			scrub: true, // Faz a animação acompanhar o scroll
+			toggleActions: "play none none reverse",
+		},
+		duration: 1,
+		x: 10,
+		autoAlpha: 0,
+		stagger: 0.05,
+		ease: "power2.out",
+	});
+}
+
+textImageWrappers.forEach((wrapper) => {
+	gsap.from(wrapper, {
+		scrollTrigger: {
+			trigger: wrapper,
+			start: "top 80%",
+			end: "top 20%",
+			scrub: true,
+			toggleActions: "play none none reverse",
+		},
+		duration: 1,
+		y: 50,
+		autoAlpha: 0,
+		ease: "power2.out",
+	});
+});
