@@ -21,6 +21,16 @@ var swiper = new Swiper(".swiper-depoimentos", {
 		el: ".swiper-pagination",
 		clickable: true,
 	},
+	breakpoints: {
+		320: {
+			slidesPerView: "auto",
+			spaceBetween: 16,
+		},
+		768: {
+			slidesPerView: 1,
+			spaceBetween: 30,
+		},
+	},
 });
 
 // Mudança de cor do nav ao rolar
