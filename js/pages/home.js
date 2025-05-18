@@ -24,7 +24,7 @@ var swiper = new Swiper(".swiper-depoimentos", {
 	breakpoints: {
 		320: {
 			slidesPerView: "auto",
-			spaceBetween: 16,
+			spaceBetween: 8,
 		},
 		768: {
 			slidesPerView: 1,
